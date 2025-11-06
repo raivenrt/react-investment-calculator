@@ -1,28 +1,33 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { useEffect } from "react";
 import * as yup from "yup";
+import InputField from "./InputField";
 
 const investmentSchema = yup.object({
   initialInvestment: yup
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0"),
+    .min(0, "minimum value is 0")
+    .transform(parseFloat),
   annualInvestment: yup
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0"),
+    .min(0, "minimum value is 0")
+    .transform(parseFloat),
   expectedReturn: yup
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0"),
+    .min(0, "minimum value is 0")
+    .transform(parseFloat),
   duration: yup
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0"),
+    .min(0, "minimum value is 0")
+    .transform(parseFloat),
 });
 export type TInvestment = yup.InferType<typeof investmentSchema>;
 
@@ -45,38 +50,20 @@ const InvestmentForm = ({
         validationSchema: investmentSchema,
       }}
     >
-      {({ values, errors }) => {
+      {({ values }) => {
         useEffect(() => {
           onChange(values);
         }, [values]);
 
-        console.log(errors);
-
         return (
           <Form id="user-input">
             <section className="input-group">
-              <section className={errors.initialInvestment && "invalid"}>
-                <label htmlFor="name">Initial Investment</label>
-                <Field name="initialInvestment" id="initialInvestment" />
-                <ErrorMessage name="initialInvestment" component={"span"} />
-              </section>
-              <section className={errors.annualInvestment && "invalid"}>
-                <label htmlFor="name">Annual Investment</label>
-                <Field name="annualInvestment" id="annualInvestment" />
-                <ErrorMessage name="annualInvestment" component={"span"} />
-              </section>
+              <InputField name="initialInvestment" />
+              <InputField name="annualInvestment" />
             </section>
             <section className="input-group">
-              <section className={errors.expectedReturn && "invalid"}>
-                <label htmlFor="name">Expected Return</label>
-                <Field name="expectedReturn" id="expectedReturn" />
-                <ErrorMessage name="expectedReturn" component={"span"} />
-              </section>
-              <section className={errors.duration && "invalid"}>
-                <label htmlFor="name">Duration</label>
-                <Field name="duration" id="duration" />
-                <ErrorMessage name="duration" component={"span"} />
-              </section>
+              <InputField name="expectedReturn" />
+              <InputField name="duration" />
             </section>
           </Form>
         );

@@ -14,7 +14,7 @@ function App() {
       <InvestmentForm
         onChange={(investment) => {
           setInvestment(investment);
-          // console.log(investment);
+          console.log(investment);
         }}
         value={investment}
       />
