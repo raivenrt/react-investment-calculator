@@ -1,9 +1,11 @@
+import type { TInvestment } from "../components/InvestmentForm";
+
 export function calculateInvestmentResults({
   initialInvestment,
   annualInvestment,
   expectedReturn,
   duration,
-}) {
+}: TInvestment) {
   const annualData = [];
   let investmentValue = initialInvestment;
 

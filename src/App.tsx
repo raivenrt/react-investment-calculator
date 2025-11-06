@@ -1,5 +1,6 @@
 import { useState } from "react";
 import InvestmentForm, { type TInvestment } from "./components/InvestmentForm";
+import Results from "./components/Results";
 
 function App() {
   const [investment, setInvestment] = useState<TInvestment>({
@@ -12,12 +13,10 @@ function App() {
   return (
     <>
       <InvestmentForm
-        onChange={(investment) => {
-          setInvestment(investment);
-          console.log(investment);
-        }}
+        onChange={(investment) => setInvestment(investment)}
         value={investment}
       />
+      <Results investment={investment} />
     </>
   );
 }

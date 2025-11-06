@@ -8,26 +8,22 @@ const investmentSchema = yup.object({
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0")
-    .transform(parseFloat),
+    .min(0, "minimum value is 0"),
   annualInvestment: yup
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0")
-    .transform(parseFloat),
+    .min(0, "minimum value is 0"),
   expectedReturn: yup
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0")
-    .transform(parseFloat),
+    .min(0, "minimum value is 0"),
   duration: yup
     .number()
     .typeError("write an integer value")
     .required("Required field")
-    .min(0, "minimum value is 0")
-    .transform(parseFloat),
+    .min(0, "minimum value is 0"),
 });
 export type TInvestment = yup.InferType<typeof investmentSchema>;
 
@@ -58,12 +54,12 @@ const InvestmentForm = ({
         return (
           <Form id="user-input">
             <section className="input-group">
-              <InputField name="initialInvestment" />
-              <InputField name="annualInvestment" />
+              <InputField name="initialInvestment" type="number" />
+              <InputField name="annualInvestment" type="number" />
             </section>
             <section className="input-group">
-              <InputField name="expectedReturn" />
-              <InputField name="duration" />
+              <InputField name="expectedReturn" type="number" />
+              <InputField name="duration" type="number" />
             </section>
           </Form>
         );
