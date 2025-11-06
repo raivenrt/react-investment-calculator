@@ -54,12 +54,24 @@ const InvestmentForm = ({
         return (
           <Form id="user-input">
             <section className="input-group">
-              <InputField name="initialInvestment" type="number" />
-              <InputField name="annualInvestment" type="number" />
+              <InputField
+                name="initialInvestment"
+                type="number"
+                label="Initial Investment"
+              />
+              <InputField
+                name="annualInvestment"
+                type="number"
+                label="annual Investment"
+              />
             </section>
             <section className="input-group">
-              <InputField name="expectedReturn" type="number" />
-              <InputField name="duration" type="number" />
+              <InputField
+                name="expectedReturn"
+                type="number"
+                label="expected Return"
+              />
+              <InputField name="duration" type="number" label="duration" />
             </section>
           </Form>
         );

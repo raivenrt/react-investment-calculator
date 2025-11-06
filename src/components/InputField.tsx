@@ -1,9 +1,11 @@
 import { Field, type FieldInputProps, type FieldMetaProps } from "formik";
 import React from "react";
 
-interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+}
 
-const InputField = ({ ...props }: InputFieldProps) => {
+const InputField = ({ label, ...props }: InputFieldProps) => {
   return (
     <Field name={props.name}>
       {({
@@ -17,7 +19,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
 
         return (
           <section className={error && "invalid"}>
-            <label htmlFor={props.id}>Initial Investment</label>
+            {label && <label htmlFor={props.id}>{label}</label>}
             <input {...props} {...field} />
             {error && <span>{error}</span>}
           </section>
