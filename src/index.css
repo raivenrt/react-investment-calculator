@@ -32,7 +32,7 @@ body {
 
 #user-input {
   padding: 1rem;
-  max-width: 30rem;
+  max-width: 40rem;
   margin: 2rem auto;
   border-radius: 4px;
   background: linear-gradient(180deg, #307e6c, #2b996d);
@@ -40,8 +40,12 @@ body {
 
 .input-group {
   display: flex;
-  justify-content: space-evenly;
-  gap: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group > section {
+  flex: 1;
 }
 
 #user-input label {
@@ -61,6 +65,19 @@ body {
   background-color: transparent;
   color: #c2e9e0;
   font-size: 1rem;
+}
+#user-input .invalid span {
+  color: tomato;
+  font-size: 0.8rem;
+}
+
+#user-input input:focus {
+  outline: none;
+  border-color: rgb(13, 216, 13);
+}
+
+#user-input .invalid input {
+  border-color: tomato;
 }
 
 #result {
